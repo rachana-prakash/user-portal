@@ -10,6 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import useUserList from "../hooks/useUserList";
 import useUserStore, { UserDetail } from "../store";
+import ProfilePhoto from "../components/ProfilePhoto";
 
 const UserList = () => {
   const { data, error, isLoading } = useUserList();
@@ -24,12 +25,7 @@ const UserList = () => {
           {data?.users?.map((user: UserDetail) => (
             <ListItem key={user.id}>
               <HStack>
-                <Image
-                  boxSize="32px"
-                  borderRadius="50%"
-                  objectFit="cover"
-                  src={user.profilepicture}
-                />
+                <ProfilePhoto size="32px" src={user.profilepicture} />
                 <Button
                   whiteSpace="normal"
                   textAlign="center"
