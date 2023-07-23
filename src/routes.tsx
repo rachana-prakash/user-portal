@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./pages/Layout";
 import PrivateRoutes from "./pages/PrivateRoutes";
-import UserDetail from "./pages/UserDetail";
+import UserDetailPage from "./pages/UserDetailPage";
 import UserList from "./pages/UserList";
 import ErrorPage from "./pages/ErrorPage";
 import UserProfile from "./pages/UserProfile";
@@ -21,7 +21,7 @@ export const routes = createBrowserRouter([
     children: [
       {
         path: ":id",
-        element: <UserDetail />,
+        element: <UserDetailPage />,
         children: [
           { index: true, element: <UserProfile /> },
           { path: "post", element: <UserPost /> },

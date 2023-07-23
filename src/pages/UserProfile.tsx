@@ -1,9 +1,8 @@
 import { Heading } from "@chakra-ui/react";
 import Details from "../components/Details";
 import useMapHelper from "../hooks/useMapHelper";
-import useUserStore, { UserDetail } from "../store";
+import useUserStore from "../store";
 import ProfilePhoto from "../components/ProfilePhoto";
-import Header from "../components/Header";
 
 const UserProfile = () => {
   const selectedUser = useUserStore((s) => s.selectedUser);
@@ -28,7 +27,6 @@ const UserProfile = () => {
 
   return (
     <>
-      <Header title="Profile" userDetails={selectedUser as UserDetail} />
       <ProfilePhoto size="150px" src={selectedUser?.profilepicture as string} />
       <Heading>{selectedUser?.name}</Heading>
       <Details details={userInfo} />

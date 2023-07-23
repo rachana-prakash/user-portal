@@ -1,15 +1,9 @@
-import {
-  Box,
-  Grid,
-  GridItem,
-  List,
-  ListItem,
-  SimpleGrid,
-} from "@chakra-ui/react";
+import { Box, Grid, GridItem, List, ListItem } from "@chakra-ui/react";
 import { Outlet, useNavigate } from "react-router-dom";
-import useUserStore from "../store";
+import UserHeader from "../components/UserHeader";
+import useUserStore, { UserDetail } from "../store";
 
-const UserDetail = () => {
+const UserDetailPage = () => {
   const navigate = useNavigate();
   const selectedUser = useUserStore((s) => s.selectedUser);
   return (
@@ -45,7 +39,12 @@ const UserDetail = () => {
             </List>
           </Box>
         </GridItem>
-        <GridItem></GridItem>
+        <GridItem>
+          <UserHeader
+            title="Profile"
+            userDetails={selectedUser as UserDetail}
+          />
+        </GridItem>
         <GridItem>
           <Outlet />
         </GridItem>
@@ -54,4 +53,4 @@ const UserDetail = () => {
   );
 };
 
-export default UserDetail;
+export default UserDetailPage;

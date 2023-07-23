@@ -21,7 +21,7 @@ interface Props {
   userDetails: UserDetail;
 }
 
-const Header = ({ title, userDetails }: Props) => {
+const UserHeader = ({ title, userDetails }: Props) => {
   const users = useUserStore((s) => s.users);
   const displayUsers = users
     .filter((user) => user.id !== userDetails.id)
@@ -89,4 +89,4 @@ const Header = ({ title, userDetails }: Props) => {
   );
 };
 
-export default Header;
+export default UserHeader;
