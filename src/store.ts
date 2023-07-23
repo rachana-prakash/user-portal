@@ -34,13 +34,15 @@ export interface Users {
 interface UserStore {
   users: UserDetail[];
   selectedUser: UserDetail | null;
-  setSelectedUserDetails: (user: UserDetail) => void;
+  setSelectedUserDetails: (user: UserDetail | null) => void;
+  setUsers: (users: UserDetail[]) => void;
 }
 const useUserStore = create<UserStore>((set) => ({
   users: [],
   selectedUser: null,
   setSelectedUserDetails: (userDetail) =>
     set(() => ({ selectedUser: userDetail })),
+  setUsers: (users) => set(() => ({ users: users })),
 }));
 if (process.env.NODE_ENV === "development") {
   mountStoreDevtool("User Store", useUserStore);

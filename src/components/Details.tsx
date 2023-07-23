@@ -6,7 +6,6 @@ interface Props {
 }
 
 const Details = ({ details }: Props) => {
-  details.map((item) => console.log(item));
   return (
     <>
       <Box>

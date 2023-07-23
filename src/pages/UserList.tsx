@@ -15,6 +15,7 @@ import ProfilePhoto from "../components/ProfilePhoto";
 const UserList = () => {
   const { data, error, isLoading } = useUserList();
   const setSelectedUser = useUserStore((s) => s.setSelectedUserDetails);
+  const setUsers = useUserStore((s) => s.setUsers);
   const navigate = useNavigate();
   if (isLoading) return <Skeleton />;
   if (error) throw error;
@@ -33,6 +34,7 @@ const UserList = () => {
                   variant="ghost"
                   onClick={() => {
                     setSelectedUser(user);
+                    setUsers(data?.users);
                     navigate(`users/${user.id}`);
                   }}
                 >
