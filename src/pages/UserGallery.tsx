@@ -1,7 +1,7 @@
-import React from "react";
+import Placeholder from "../components/Placeholder";
 
 const UserGallery = () => {
-  return <div>UserGallery</div>;
+  return <Placeholder placeholder="Coming Soon"></Placeholder>;
 };
 
 export default UserGallery;

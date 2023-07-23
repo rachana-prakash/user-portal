@@ -1,7 +1,7 @@
-import React from "react";
+import Placeholder from "../components/Placeholder";
 
 const UserTodo = () => {
-  return <div>UserTodo</div>;
+  return <Placeholder placeholder="Coming Soon"></Placeholder>;
 };
 
 export default UserTodo;
