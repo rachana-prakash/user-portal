@@ -1,9 +1,9 @@
 import { Navigate, Outlet } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import useUserStore from "../store";
 
 const PrivateRoutes = () => {
-  const { user } = useAuth();
-  if (!user) {
+  const selectedUser = useUserStore((s) => s.selectedUser);
+  if (!selectedUser) {
     return <Navigate to="/" />;
   }
   return <Outlet />;

@@ -1,5 +1,5 @@
 import { create } from "zustand";
-
+import { mountStoreDevtool } from "simple-zustand-devtools";
 interface UserGeoLoc {
   lat: string;
   lng: string;
@@ -16,7 +16,7 @@ interface UserCompany {
   catchPhrase: string;
   name: string;
 }
-interface UserDetail {
+export interface UserDetail {
   id: number;
   address: UserAddress;
   company: UserCompany;
@@ -27,12 +27,22 @@ interface UserDetail {
   username: string;
   website: string;
 }
+export interface Users {
+  users: UserDetail[];
+}
 
 interface UserStore {
   users: UserDetail[];
+  selectedUser: UserDetail | null;
+  setSelectedUserDetails: (user: UserDetail) => void;
 }
 const useUserStore = create<UserStore>((set) => ({
   users: [],
+  selectedUser: null,
+  setSelectedUserDetails: (userDetail) =>
+    set(() => ({ selectedUser: userDetail })),
 }));
-
+if (process.env.NODE_ENV === "development") {
+  mountStoreDevtool("User Store", useUserStore);
+}
 export default useUserStore;
