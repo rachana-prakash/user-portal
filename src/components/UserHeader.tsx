@@ -52,7 +52,7 @@ const UserHeader = ({ userDetails }: Props) => {
                 <MenuButton
                   as={Button}
                   backgroundColor="white"
-                  _hover={{ "background-color": "white" }}
+                  _hover={{ "backgroundColor": "white" }}
                   cursor={"pointer"}
                 >
                   <HStack>

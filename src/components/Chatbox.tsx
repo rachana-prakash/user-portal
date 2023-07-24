@@ -31,7 +31,7 @@ const Chatbox = () => {
             justifyContent="space-between"
             backgroundColor="purple.100"
             color="white"
-            _hover={{ "background-color": "purple.100" }}
+            _hover={{ backgroundColor: "purple.100" }}
           >
             <Box display="flex" alignItems="center" textAlign="left">
               <BsChatRight fontWeight="bold" />
@@ -59,22 +59,21 @@ const Chatbox = () => {
               }}
             >
               {chatUsers?.map((user, index) => (
-                <>
-                  <GridItem
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="space-between"
-                    paddingRight="5px"
-                  >
-                    <Box display="flex" padding="5px">
-                      <ProfilePhoto size="24px" src={user.profilepicture} />
-                      <Text marginLeft="10px"> {user.name}</Text>
-                    </Box>
-                    <GrStatusGoodSmall
-                      color={index % 2 === 0 ? "green" : "grey"}
-                    />
-                  </GridItem>
-                </>
+                <GridItem
+                  key={index}
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="space-between"
+                  paddingRight="5px"
+                >
+                  <Box display="flex" padding="5px">
+                    <ProfilePhoto size="24px" src={user.profilepicture} />
+                    <Text marginLeft="10px"> {user.name}</Text>
+                  </Box>
+                  <GrStatusGoodSmall
+                    color={index % 2 === 0 ? "green" : "grey"}
+                  />
+                </GridItem>
               ))}
             </SimpleGrid>
           </AccordionPanel>

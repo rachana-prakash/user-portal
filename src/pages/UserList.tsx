@@ -25,7 +25,13 @@ const UserList = () => {
   return (
     <>
       <Box display="flex" justifyContent="center">
-        <SimpleGrid width="50%" borderRadius="20px" backgroundColor="white.50">
+        <SimpleGrid
+          width="50%"
+          borderRadius="20px"
+          backgroundColor="white.50"
+          position="absolute"
+          zIndex="4"
+        >
           <Box textAlign="center">
             <Heading marginY="20px" size="md" color="gray.500">
               Select an account

@@ -37,27 +37,25 @@ const UserDetailPage = () => {
               <TabList>
                 <VStack width="100%">
                   {tabItems.map((item, index) => (
-                    <>
-                      <Tab
-                        margin="20px"
-                        key={index}
-                        cursor="pointer"
-                        display="flex"
-                        justifyContent="flex-start"
-                        color="gray.200"
-                        width="100%"
-                        borderBottom="2px solid white"
-                        _selected={{ color: "white", fontWeight: "bold" }}
-                        onClick={() => {
-                          navigate(
-                            `/users/${selectedUser?.id}/${item.toLowerCase()}`
-                          );
-                          setPageTitle(item);
-                        }}
-                      >
-                        {item}
-                      </Tab>
-                    </>
+                    <Tab
+                      margin="20px"
+                      key={index}
+                      cursor="pointer"
+                      display="flex"
+                      justifyContent="flex-start"
+                      color="gray.200"
+                      width="100%"
+                      borderBottom="2px solid white"
+                      _selected={{ color: "white", fontWeight: "bold" }}
+                      onClick={() => {
+                        navigate(
+                          `/users/${selectedUser?.id}/${item.toLowerCase()}`
+                        );
+                        setPageTitle(item);
+                      }}
+                    >
+                      {item}
+                    </Tab>
                   ))}
                 </VStack>
               </TabList>
