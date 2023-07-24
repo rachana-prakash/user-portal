@@ -1,6 +1,14 @@
-import { Grid, GridItem, Tab, TabList, Tabs, VStack } from "@chakra-ui/react";
-import { useState } from "react";
+import {
+  Box,
+  Grid,
+  GridItem,
+  Tab,
+  TabList,
+  Tabs,
+  VStack,
+} from "@chakra-ui/react";
 import { Outlet, useNavigate } from "react-router-dom";
+import Chatbox from "../components/Chatbox";
 import UserHeader from "../components/UserHeader";
 import useUserStore, { UserDetail } from "../store";
 
@@ -64,6 +72,9 @@ const UserDetailPage = () => {
           </VStack>
         </GridItem>
       </Grid>
+      <Box position="fixed" bottom="0" right="0" width="300px">
+        <Chatbox />
+      </Box>
     </>
   );
 };

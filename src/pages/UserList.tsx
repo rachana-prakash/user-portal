@@ -3,21 +3,22 @@ import {
   Button,
   HStack,
   Heading,
-  Text,
   List,
   ListItem,
   SimpleGrid,
   Skeleton,
+  Text,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import ProfilePhoto from "../components/ProfilePhoto";
 import useUserList from "../hooks/useUserList";
 import useUserStore, { UserDetail } from "../store";
-import ProfilePhoto from "../components/ProfilePhoto";
 
 const UserList = () => {
   const { data, error, isLoading } = useUserList();
   const setSelectedUser = useUserStore((s) => s.setSelectedUserDetails);
   const setUsers = useUserStore((s) => s.setUsers);
+  const setPageTitle = useUserStore((s) => s.setPageTitle);
   const navigate = useNavigate();
   if (isLoading) return <Skeleton />;
   if (error) throw error;
@@ -63,6 +64,7 @@ const UserList = () => {
                       setSelectedUser(user);
                       setUsers(data?.users);
                       navigate(`users/${user.id}/profile`);
+                      setPageTitle("Profile");
                     }}
                   >
                     <Button fontSize="lg" variant="ghost">
