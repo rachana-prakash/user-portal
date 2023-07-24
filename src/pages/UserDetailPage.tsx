@@ -7,9 +7,8 @@ import useUserStore, { UserDetail } from "../store";
 const tabItems = ["Profile", "Post", "Gallery", "Todo"];
 const UserDetailPage = () => {
   const navigate = useNavigate();
-
-  const [title, setTitle] = useState<string>("Profile");
   const selectedUser = useUserStore((s) => s.selectedUser);
+  const setPageTitle = useUserStore((s) => s.setPageTitle);
   return (
     <>
       <Grid
@@ -45,7 +44,7 @@ const UserDetailPage = () => {
                           navigate(
                             `/users/${selectedUser?.id}/${item.toLowerCase()}`
                           );
-                          setTitle(item);
+                          setPageTitle(item);
                         }}
                       >
                         {item}
@@ -60,10 +59,7 @@ const UserDetailPage = () => {
 
         <GridItem>
           <VStack height="100%">
-            <UserHeader
-              title={title}
-              userDetails={selectedUser as UserDetail}
-            />
+            <UserHeader userDetails={selectedUser as UserDetail} />
             <Outlet />
           </VStack>
         </GridItem>

@@ -7,7 +7,6 @@ import {
   Heading,
   Menu,
   MenuButton,
-  MenuDivider,
   MenuItem,
   MenuList,
   Stack,
@@ -19,17 +18,18 @@ import useUserStore, { UserDetail } from "../store";
 import ProfilePhoto from "./ProfilePhoto";
 
 interface Props {
-  title: string;
   userDetails: UserDetail;
 }
 
-const UserHeader = ({ title, userDetails }: Props) => {
+const UserHeader = ({ userDetails }: Props) => {
   const users = useUserStore((s) => s.users);
+  const title = useUserStore((s) => s.pageTitle);
   const displayUsers = users
     .filter((user) => user.id !== userDetails.id)
     .splice(Math.floor(Math.random() * users.length - 2), 2);
   const navigate = useNavigate();
   const setSelectedUserDetails = useUserStore((s) => s.setSelectedUserDetails);
+  const setPageTitle = useUserStore((s) => s.setPageTitle);
 
   return (
     <>
@@ -46,7 +46,11 @@ const UserHeader = ({ title, userDetails }: Props) => {
             </Heading>
           </Box>
 
-          <Flex alignItems={"center"}>
+          <Flex
+            alignItems={"center"}
+            border="none"
+            boxShadow="rgba(0, 0, 0, 0.1) 0px 10px 15px -3px"
+          >
             <Stack direction={"row"} spacing={7}>
               <Menu>
                 <MenuButton as={Button} cursor={"pointer"}>
@@ -64,7 +68,7 @@ const UserHeader = ({ title, userDetails }: Props) => {
                   <br />
                   <Center>
                     <ProfilePhoto
-                      size="64px"
+                      size="100px"
                       src={userDetails.profilepicture}
                     />
                   </Center>
@@ -74,17 +78,24 @@ const UserHeader = ({ title, userDetails }: Props) => {
                     <Text color={"gray.200"}>{userDetails.email}</Text>
                   </VStack>
                   <br />
-                  <MenuDivider />
+
                   <VStack>
                     {displayUsers?.map((user, index) => (
                       <MenuItem
                         onClick={() => {
                           setSelectedUserDetails(user);
                           navigate(`/users/${user.id}/profile`);
+                          setPageTitle("Profile");
                         }}
                         key={index}
+                        padding="2px"
                       >
-                        <HStack>
+                        <HStack
+                          borderTop="1px solid var(--chakra-colors-gray-300)"
+                          padding="5px"
+                          width="100%"
+                          justifyContent="center"
+                        >
                           <ProfilePhoto size="32px" src={user.profilepicture} />{" "}
                           <Text> {user.name}</Text>
                         </HStack>
@@ -99,6 +110,7 @@ const UserHeader = ({ title, userDetails }: Props) => {
                       onClick={() => {
                         setSelectedUserDetails(null);
                         navigate("/");
+                        setPageTitle("profile");
                       }}
                     >
                       Sign Out
