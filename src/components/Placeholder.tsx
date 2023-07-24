@@ -5,8 +5,15 @@ interface Props {
 }
 const Placeholder = ({ placeholder }: Props) => {
   return (
-    <SimpleGrid justifyContent="center" alignItems="center" padding={5}>
-      <Heading color="white.50">{placeholder}</Heading>
+    <SimpleGrid
+      height="80%"
+      justifyContent="center"
+      alignItems="center"
+      padding={5}
+    >
+      <Heading color="white.50" fontSize="6xl">
+        {placeholder}
+      </Heading>
     </SimpleGrid>
   );
 };

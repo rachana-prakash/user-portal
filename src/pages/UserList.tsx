@@ -1,7 +1,9 @@
 import {
+  Box,
   Button,
   HStack,
-  Image,
+  Heading,
+  Text,
   List,
   ListItem,
   SimpleGrid,
@@ -21,29 +23,49 @@ const UserList = () => {
   if (error) throw error;
   return (
     <>
-      <SimpleGrid justifyContent="center" alignItems="center" minHeight="100vh">
-        <List overflowY="auto" height="300px">
-          {data?.users?.map((user: UserDetail) => (
-            <ListItem key={user.id}>
-              <HStack>
-                <ProfilePhoto size="32px" src={user.profilepicture} />
-                <Button
-                  whiteSpace="normal"
-                  textAlign="center"
-                  fontSize="lg"
-                  variant="ghost"
-                  onClick={() => {
-                    setSelectedUser(user);
-                    setUsers(data?.users);
-                    navigate(`users/${user.id}`);
-                  }}
-                >
-                  {user.name}
-                </Button>
-              </HStack>
-            </ListItem>
-          ))}
-        </List>
+      <SimpleGrid backgroundColor="white.50" padding={5}>
+        <Box textAlign="center">
+          <Heading marginY="20px" size="md" color="gray.500">
+            Select an account
+          </Heading>
+          <List
+            backgroundColor="white"
+            overflowY="auto"
+            height="500px"
+            sx={{
+              "&::-webkit-scrollbar": {
+                width: "10px",
+                borderRadius: "16px",
+                backgroundColor: `rgba(216, 216, 216, 0.5)`,
+              },
+              "&::-webkit-scrollbar-thumb": {
+                borderRadius: "16px",
+                backgroundColor: `rgba(216, 216, 216, 0.5)`,
+              },
+            }}
+          >
+            {data?.users?.map((user: UserDetail) => (
+              <ListItem cursor="pointer" key={user.id}>
+                <HStack alignItems="center">
+                  <Button
+                    fontSize="lg"
+                    variant="ghost"
+                    onClick={() => {
+                      setSelectedUser(user);
+                      setUsers(data?.users);
+                      navigate(`users/${user.id}`);
+                    }}
+                  >
+                    <ProfilePhoto size="32px" src={user.profilepicture} />
+                    <Text marginX="5px" color="gray.600">
+                      {user.name}
+                    </Text>
+                  </Button>
+                </HStack>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
       </SimpleGrid>
     </>
   );

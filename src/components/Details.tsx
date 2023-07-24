@@ -1,5 +1,4 @@
-import { Fragment } from "react";
-import { Box, HStack, Heading, List, ListItem, Text } from "@chakra-ui/react";
+import { Box, Grid, Heading, Text } from "@chakra-ui/react";
 
 interface Props {
   details: { title: string; detail: string }[];
@@ -8,16 +7,16 @@ interface Props {
 const Details = ({ details }: Props) => {
   return (
     <>
-      <Box>
+      <Box padding="20px">
         {details.map((item, index) => (
-          <HStack key={index}>
-            <Text fontSize="md" color="gray.200">
-              {item.title}:{" "}
+          <Grid gridTemplateColumns="1fr 2fr" key={index}>
+            <Text fontSize="md" color="gray.400">
+              {item.title[0].toUpperCase() + item.title.substring(1)}:{" "}
             </Text>
-            <Heading size="md" color="gray.100">
+            <Heading size="md" color="gray.500">
               {item.detail}
             </Heading>
-          </HStack>
+          </Grid>
         ))}
       </Box>
     </>

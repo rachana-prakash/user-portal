@@ -1,52 +1,83 @@
-import { Box, Grid, GridItem, List, ListItem } from "@chakra-ui/react";
+import { Grid, GridItem, Menu, MenuItem, VStack } from "@chakra-ui/react";
+import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import UserHeader from "../components/UserHeader";
 import useUserStore, { UserDetail } from "../store";
 
 const UserDetailPage = () => {
   const navigate = useNavigate();
+
+  const [title, setTitle] = useState<string>("Profile");
   const selectedUser = useUserStore((s) => s.selectedUser);
   return (
     <>
-      <Grid>
+      <Grid
+        gridTemplateColumns="300px 2fr"
+        height="100vh"
+        gridGap="40px"
+        padding="10px"
+      >
         <GridItem>
-          <Box bgColor="purple.100">
-            <List color="white">
-              <ListItem
+          <VStack
+            height="100%"
+            justifyContent="center"
+            alignItems="center"
+            borderRadius="50px"
+            bgColor="purple.100"
+          >
+            <Menu>
+              <MenuItem
                 padding="20px"
-                onClick={() => navigate(`/users/${selectedUser?.id}`)}
+                cursor="pointer"
+                onClick={() => {
+                  navigate(`/users/${selectedUser?.id}`);
+                  setTitle("Profile");
+                }}
               >
                 Profile
-              </ListItem>
-              <ListItem
+              </MenuItem>
+              <MenuItem
                 padding="20px"
-                onClick={() => navigate(`/users/${selectedUser?.id}/post`)}
+                cursor="pointer"
+                onClick={() => {
+                  navigate(`/users/${selectedUser?.id}/post`);
+                  setTitle("Post");
+                }}
               >
                 Post
-              </ListItem>
-              <ListItem
+              </MenuItem>
+              <MenuItem
                 padding="20px"
-                onClick={() => navigate(`/users/${selectedUser?.id}/gallery`)}
+                cursor="pointer"
+                onClick={() => {
+                  navigate(`/users/${selectedUser?.id}/gallery`);
+                  setTitle("Gallery");
+                }}
               >
                 Gallery
-              </ListItem>
-              <ListItem
+              </MenuItem>
+              <MenuItem
                 padding="20px"
-                onClick={() => navigate(`/users/${selectedUser?.id}/todo`)}
+                cursor="pointer"
+                onClick={() => {
+                  navigate(`/users/${selectedUser?.id}/todo`);
+                  setTitle("Todo");
+                }}
               >
                 Todo
-              </ListItem>
-            </List>
-          </Box>
+              </MenuItem>
+            </Menu>
+          </VStack>
         </GridItem>
+
         <GridItem>
-          <UserHeader
-            title="Profile"
-            userDetails={selectedUser as UserDetail}
-          />
-        </GridItem>
-        <GridItem>
-          <Outlet />
+          <VStack height="100%">
+            <UserHeader
+              title={title}
+              userDetails={selectedUser as UserDetail}
+            />
+            <Outlet />
+          </VStack>
         </GridItem>
       </Grid>
     </>

@@ -1,11 +1,13 @@
 import { extendTheme, ThemeConfig } from "@chakra-ui/react";
+import { listTheme } from "./themes/List";
 
-const config: ThemeConfig = {
+const config = {
   initialColorMode: "light",
+  useSystemColorMode: false,
 };
-
 const theme = extendTheme({
   config,
+  components: { List: listTheme },
   colors: {
     purple: {
       50: "#6238c8",
