@@ -62,7 +62,7 @@ const UserList = () => {
                     onClick={() => {
                       setSelectedUser(user);
                       setUsers(data?.users);
-                      navigate(`users/${user.id}`);
+                      navigate(`users/${user.id}/profile`);
                     }}
                   >
                     <Button fontSize="lg" variant="ghost">

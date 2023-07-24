@@ -1,9 +1,10 @@
-import { Grid, GridItem, Menu, MenuItem, VStack } from "@chakra-ui/react";
+import { Grid, GridItem, Tab, TabList, Tabs, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import UserHeader from "../components/UserHeader";
 import useUserStore, { UserDetail } from "../store";
 
+const tabItems = ["Profile", "Post", "Gallery", "Todo"];
 const UserDetailPage = () => {
   const navigate = useNavigate();
 
@@ -20,53 +21,40 @@ const UserDetailPage = () => {
         <GridItem>
           <VStack
             height="100%"
-            justifyContent="center"
-            alignItems="center"
             borderRadius="50px"
             bgColor="purple.100"
+            justifyContent="center"
+            alignItems="center"
           >
-            <Menu>
-              <MenuItem
-                padding="20px"
-                cursor="pointer"
-                onClick={() => {
-                  navigate(`/users/${selectedUser?.id}`);
-                  setTitle("Profile");
-                }}
-              >
-                Profile
-              </MenuItem>
-              <MenuItem
-                padding="20px"
-                cursor="pointer"
-                onClick={() => {
-                  navigate(`/users/${selectedUser?.id}/post`);
-                  setTitle("Post");
-                }}
-              >
-                Post
-              </MenuItem>
-              <MenuItem
-                padding="20px"
-                cursor="pointer"
-                onClick={() => {
-                  navigate(`/users/${selectedUser?.id}/gallery`);
-                  setTitle("Gallery");
-                }}
-              >
-                Gallery
-              </MenuItem>
-              <MenuItem
-                padding="20px"
-                cursor="pointer"
-                onClick={() => {
-                  navigate(`/users/${selectedUser?.id}/todo`);
-                  setTitle("Todo");
-                }}
-              >
-                Todo
-              </MenuItem>
-            </Menu>
+            <Tabs position="relative" variant="unstyled">
+              <TabList>
+                <VStack width="100%">
+                  {tabItems.map((item, index) => (
+                    <>
+                      <Tab
+                        margin="20px"
+                        key={index}
+                        cursor="pointer"
+                        display="flex"
+                        justifyContent="flex-start"
+                        color="gray.200"
+                        width="100%"
+                        borderBottom="2px solid white"
+                        _selected={{ color: "white", fontWeight: "bold" }}
+                        onClick={() => {
+                          navigate(
+                            `/users/${selectedUser?.id}/${item.toLowerCase()}`
+                          );
+                          setTitle(item);
+                        }}
+                      >
+                        {item}
+                      </Tab>
+                    </>
+                  ))}
+                </VStack>
+              </TabList>
+            </Tabs>
           </VStack>
         </GridItem>
 

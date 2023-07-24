@@ -80,7 +80,7 @@ const UserHeader = ({ title, userDetails }: Props) => {
                       <MenuItem
                         onClick={() => {
                           setSelectedUserDetails(user);
-                          navigate(`/users/${user.id}`);
+                          navigate(`/users/${user.id}/profile`);
                         }}
                         key={index}
                       >

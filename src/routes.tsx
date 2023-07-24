@@ -23,7 +23,7 @@ export const routes = createBrowserRouter([
         path: ":id",
         element: <UserDetailPage />,
         children: [
-          { index: true, element: <UserProfile /> },
+          { index: true, path: "profile", element: <UserProfile /> },
           { path: "post", element: <UserPost /> },
           { path: "gallery", element: <UserGallery /> },
           { path: "todo", element: <UserTodo /> },
