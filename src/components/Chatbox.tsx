@@ -21,7 +21,6 @@ const Chatbox = () => {
   return (
     <>
       <Accordion
-        defaultIndex={[0]}
         allowMultiple
         borderRadius="4px"
         border="1px solid var(--chakra-colors-purple-100)"

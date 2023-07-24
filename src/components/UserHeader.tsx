@@ -46,14 +46,15 @@ const UserHeader = ({ userDetails }: Props) => {
             </Heading>
           </Box>
 
-          <Flex
-            alignItems={"center"}
-            border="none"
-            boxShadow="rgba(0, 0, 0, 0.1) 0px 10px 15px -3px"
-          >
+          <Flex alignItems={"center"} border="none">
             <Stack direction={"row"} spacing={7}>
               <Menu>
-                <MenuButton as={Button} cursor={"pointer"}>
+                <MenuButton
+                  as={Button}
+                  backgroundColor="white"
+                  _hover={{ "background-color": "white" }}
+                  cursor={"pointer"}
+                >
                   <HStack>
                     <ProfilePhoto
                       size="32px"

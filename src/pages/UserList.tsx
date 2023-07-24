@@ -48,9 +48,9 @@ const UserList = () => {
             >
               {data?.users?.map((user: UserDetail) => (
                 <ListItem
-                  marginX="10px"
-                  marginY="10px"
+                  margin="5px 10px 10px 10px"
                   cursor="pointer"
+                  padding="5px"
                   key={user.id}
                 >
                   <HStack
