@@ -25,12 +25,7 @@ const UserList = () => {
   return (
     <>
       <Box display="flex" justifyContent="center">
-        <SimpleGrid
-          width="50%"
-          borderRadius="4px"
-          backgroundColor="white.50"
-          padding={5}
-        >
+        <SimpleGrid width="50%" borderRadius="20px" backgroundColor="white.50">
           <Box textAlign="center">
             <Heading marginY="20px" size="md" color="gray.500">
               Select an account
@@ -67,7 +62,7 @@ const UserList = () => {
                       setPageTitle("Profile");
                     }}
                   >
-                    <Button fontSize="lg" variant="ghost">
+                    <Button paddingLeft="0" fontSize="lg" variant="ghost">
                       <ProfilePhoto size="32px" src={user.profilepicture} />
                       <Text marginX="5px" color="gray.600">
                         {user.name}

@@ -16,6 +16,8 @@ import ProfilePhoto from "./ProfilePhoto";
 
 const Chatbox = () => {
   const users = useUserStore((s) => s.users);
+  const selectedUser = useUserStore((s) => s.selectedUser);
+  const chatUsers = users.filter((user) => user.id !== selectedUser?.id);
   return (
     <>
       <Accordion
@@ -43,7 +45,7 @@ const Chatbox = () => {
 
           <AccordionPanel padding="5px">
             <SimpleGrid
-              height="300px"
+              height="250px"
               overflowY="auto"
               sx={{
                 "&::-webkit-scrollbar": {
@@ -57,7 +59,7 @@ const Chatbox = () => {
                 },
               }}
             >
-              {users?.map((user, index) => (
+              {chatUsers?.map((user, index) => (
                 <>
                   <GridItem
                     display="flex"
