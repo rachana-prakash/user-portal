@@ -42,7 +42,7 @@ const Chatbox = () => {
             <AccordionIcon />
           </AccordionButton>
 
-          <AccordionPanel padding="5px">
+          <AccordionPanel backgroundColor="white" padding="5px">
             <SimpleGrid
               height="250px"
               overflowY="auto"

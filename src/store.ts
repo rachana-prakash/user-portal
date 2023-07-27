@@ -48,7 +48,8 @@ const useUserStore = create<UserStore>((set) => ({
   setUsers: (users) => set(() => ({ users: users })),
   setPageTitle: (title) => set(() => ({ pageTitle: title })),
 }));
-if (process.env.NODE_ENV === "development") {
+if (import.meta.env.MODE === "development") {
   mountStoreDevtool("User Store", useUserStore);
 }
+
 export default useUserStore;

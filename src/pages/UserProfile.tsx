@@ -3,6 +3,7 @@ import Details from "../components/Details";
 import ProfilePhoto from "../components/ProfilePhoto";
 import useMapHelper from "../hooks/useMapHelper";
 import useUserStore from "../store";
+import Map from "../components/Map";
 
 const UserProfile = () => {
   const selectedUser = useUserStore((s) => s.selectedUser);
@@ -61,6 +62,16 @@ const UserProfile = () => {
               Address
             </Text>
             <Details details={userAddress} />
+          </Box>
+          <Box>
+            <Map
+              lat={parseInt(selectedUser?.address.geo.lat as string)}
+              lng={parseInt(selectedUser?.address.geo.lng as string)}
+            />
+            <Text textAlign="right" fontWeight="bold">
+              Lat:{selectedUser?.address.geo.lat} Long:
+              {selectedUser?.address.geo.lng}
+            </Text>
           </Box>
         </GridItem>
       </SimpleGrid>
