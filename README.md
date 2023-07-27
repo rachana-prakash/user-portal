@@ -37,4 +37,4 @@ React Google Maps API
 ## Pages
 `/` The base route is the user list page 
 
-`users` This route has child routes to explore details of the user
+`users` This route has child routes to explore details of the user and is a private route
