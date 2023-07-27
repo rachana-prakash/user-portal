@@ -15,6 +15,8 @@ Zustand for State Management (a simple application needs a simple state manageme
 
 # Prerequisites 
 Since Google Maps is being used, please add your google maps api key as follows in your `.env` file as follows:
+
+
 VITE_MAPS_API_KEY = YOUR_API_KEY
 
 # Run
